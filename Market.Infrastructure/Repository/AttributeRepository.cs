@@ -1,6 +1,7 @@
 ﻿using Market.Application.Models;
 using Market.Application.Repository;
 using Market.Domain;
+using Market.Domain.Entity;
 using Market.Infrastructure.Errors;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,7 +35,21 @@ namespace Market.Infrastructure.Repository
 
         public async Task<IEnumerable<Domain.Entity.Attribute>> GetAllAsync(AttributeQueryRequest attributeQueryRequest)
         {
-            var attributes = _attributeContext.Attributes;
+            IQueryable<Domain.Entity.Attribute> attributes = _attributeContext.Attributes;
+            if (attributeQueryRequest.Name is not null)
+            {
+                attributes = attributes.Where(x => x.Name.StartsWith(attributeQueryRequest.Name));
+            }
+            if (attributeQueryRequest.Value is not null)
+            {
+                attributes = attributes.Where(x => x.Value.StartsWith(attributeQueryRequest.Value));
+            }
+            attributes = attributes.Skip(attributeQueryRequest.Skip);
+
+            if (attributeQueryRequest.Take is not null)
+            {
+                attributes = attributes.Take(attributeQueryRequest.Take.Value);
+            }
             return await attributes.ToListAsync();
         }
 

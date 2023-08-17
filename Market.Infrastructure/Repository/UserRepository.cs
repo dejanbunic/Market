@@ -61,7 +61,22 @@ namespace Market.Infrastructure.Repository
 
         public async Task<IEnumerable<User>> GetAllAsync(UserQueryRequest userQueryRequest)
         {
-            var users = _userContext.Users;
+            IQueryable<User> users = _userContext.Users;
+            if (userQueryRequest.FirstName is not null)
+            {
+                users = users.Where(x => x.FirstName.StartsWith(userQueryRequest.FirstName));
+            }
+            if (userQueryRequest.LastName is not null)
+            {
+                users = users.Where(x => x.LastName.StartsWith(userQueryRequest.LastName));
+            }
+            users = users.Skip(userQueryRequest.Skip);
+
+            if (userQueryRequest.Take is not null)
+            {
+                users = users.Take(userQueryRequest.Take.Value);
+            }
+
             return await users.ToListAsync();
         }
 
