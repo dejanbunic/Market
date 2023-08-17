@@ -1,6 +1,7 @@
 ﻿using Market.Application.Models;
 using Market.Application.Repository;
 using Market.Domain;
+using Market.Infrastructure.Common;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -36,7 +37,7 @@ namespace Market.Infrastructure.Repository
                         new Claim(ClaimTypes.Email, credentials.Email)
                     }),
                 Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes("M0j_KaoTaJnI-kLjuC123")), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Constants.JWT_PASSWORD)), SecurityAlgorithms.HmacSha256Signature)
 
             };
             var tokenHandler = new JwtSecurityTokenHandler();

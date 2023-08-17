@@ -2,7 +2,6 @@
 
 using Market.Application.Models;
 using Market.Domain.Entity;
-using System.Data;
 
 namespace Market.Application.Services
 {

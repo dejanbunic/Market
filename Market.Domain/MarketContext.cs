@@ -24,7 +24,7 @@ namespace Market.Domain
 
             var connectionString = Configuration.GetConnectionString("MSSQL");
 
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Market;User id=dejanbunic;Password=0709;TrustServerCertificate=True;Encrypt=False;");
+            optionsBuilder.UseSqlServer(connectionString);
 
         }
 

@@ -16,5 +16,7 @@ namespace Market.Infrastructure.Common
 
         public static string ATTRIBUTE_NOTFOUND = "Attribute not found.";
 
+        public static string JWT_PASSWORD = "M0j_KaoTaJnI-kLjuC123";
+
     }
 }

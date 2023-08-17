@@ -16,6 +16,9 @@ namespace Market.Infrastructure.Services
 
         public async Task<Dictionary<string,string>> LoginAsync(Credentials credentials)
         {
+            //userService.GetByUsername();
+            //create token
+            //userService.Update(user
             return await _loginRepository.LoginAsync(credentials);
         }
 

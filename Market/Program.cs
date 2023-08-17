@@ -1,5 +1,6 @@
 using Market.Domain;
 using Market.Infrastructure;
+using Market.Infrastructure.Common;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Market
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            byte[] _key = Encoding.ASCII.GetBytes("M0j_KaoTaJnI-kLjuC123");
+            byte[] _key = Encoding.ASCII.GetBytes(Constants.JWT_PASSWORD);
         // Add services to the container.
         builder.Services
                 .AddDbContext<MarketContext>();

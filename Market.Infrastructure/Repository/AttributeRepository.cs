@@ -1,7 +1,6 @@
 ﻿using Market.Application.Models;
 using Market.Application.Repository;
 using Market.Domain;
-using Market.Domain.Entity;
 using Market.Infrastructure.Errors;
 using Microsoft.EntityFrameworkCore;
 

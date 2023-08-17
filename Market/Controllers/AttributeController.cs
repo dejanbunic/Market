@@ -4,10 +4,13 @@ using Market.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Market.Domain.Entity;
 using Attribute = Market.Domain.Entity.Attribute;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Market.Controllers
 {
     [ApiController]
+   /* [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]*/
     [Route("api/[controller]")]
     public class AttributeController : ControllerBase
     {

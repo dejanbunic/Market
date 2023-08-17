@@ -4,7 +4,6 @@ using Market.Domain;
 using Market.Domain.Entity;
 using Market.Infrastructure.Errors;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace Market.Infrastructure.Repository
 {
@@ -22,7 +21,6 @@ namespace Market.Infrastructure.Repository
             _productContext.Products.Add(product);
             await _productContext.SaveChangesAsync();
             return product;
-            /*throw new NotImplementedException();*/
         }
 
         public async Task<bool> DeleteProductAsync(Guid id)
@@ -36,9 +34,9 @@ namespace Market.Infrastructure.Repository
         public async Task<IEnumerable<Product>> GetAllAsync(ProductQueryRequest productQueryRequest)
         {
             IQueryable<Product> products = _productContext.Products.Include(p=> p.Attributes);
-           if (productQueryRequest.Name is not null)
+            if (productQueryRequest.Name is not null)
             {
-                products = products.Where(x => x.Name.StartsWith(productQueryRequest.Name));
+                products = products.Where(x => x.Name.ToLower().StartsWith(productQueryRequest.Name.ToLower()));
             }
 
             if (productQueryRequest.Group is not null)
@@ -48,8 +46,7 @@ namespace Market.Infrastructure.Repository
 
             if (productQueryRequest.Attributes is not null && productQueryRequest.Attributes.Count>0)
             {
-                products = products.Where(product => product.Attributes.Count(attribute => productQueryRequest.Attributes.Contains(attribute.Id))==productQueryRequest.Attributes.Count);
-
+                products = products.Where(product => product.Attributes.Count(attribute => productQueryRequest.Attributes.Contains(attribute.Id)) == productQueryRequest.Attributes.Count);
             }
 
             products = products.Skip(productQueryRequest.Skip);
@@ -58,7 +55,6 @@ namespace Market.Infrastructure.Repository
             {
                 products = products.Take(productQueryRequest.Take.Value);
             }
-
 
             return await products.ToListAsync();
         }
