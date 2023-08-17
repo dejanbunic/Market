@@ -1,0 +1,15 @@
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\bin\Debug\net6.0\Market.Application.deps.json
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\bin\Debug\net6.0\Market.Application.dll
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\bin\Debug\net6.0\Market.Application.pdb
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\bin\Debug\net6.0\Market.Domain.dll
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\bin\Debug\net6.0\Market.Domain.pdb
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\Market.Application.csproj.AssemblyReference.cache
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\Market.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\Market.Application.AssemblyInfoInputs.cache
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\Market.Application.AssemblyInfo.cs
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\Market.Application.csproj.CoreCompileInputs.cache
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\Market.Application.csproj.CopyComplete
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\Market.Application.dll
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\refint\Market.Application.dll
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\Market.Application.pdb
+C:\Users\DejanBunic\Desktop\projekat_prointer\Market\Market.Application\obj\Debug\net6.0\ref\Market.Application.dll
