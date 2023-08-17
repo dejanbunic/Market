@@ -19,7 +19,7 @@ namespace Market.Infrastructure
             services.AddScoped<IAttributeRepository, AttributeRepository>();
             services.AddTransient<IAttributeService, AttributeService>();
 
-            services.AddScoped<ILoginRepository, LoginRepository>();
+
             services.AddTransient<ILoginService, LoginService>();
 
             return services;

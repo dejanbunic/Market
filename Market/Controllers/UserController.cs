@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace Market.Controllers
 {
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+/*    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]*/
     [Route("api/[controller]")]
 
     public class UsersController : ControllerBase

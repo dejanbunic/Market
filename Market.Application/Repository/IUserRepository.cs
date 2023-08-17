@@ -10,6 +10,7 @@ namespace Market.Application.Repository
         Task<User> CreateUserAsync(User user);
         Task<User> UpdateUserAsync(User user);
         Task<bool> DeleteUserAsync(Guid userId);
+        Task<User> CheckCredentialsAsync(Credentials credentials);
 
     }
 }

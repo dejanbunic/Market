@@ -2,11 +2,10 @@
 using Market.Application.Repository;
 using Market.Domain;
 using Market.Domain.Entity;
+using Market.Infrastructure.Common;
 using Market.Infrastructure.Errors;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using System.Security.Cryptography;
 using Constants = Market.Infrastructure.Common.Constants;
 
 
@@ -21,14 +20,18 @@ namespace Market.Infrastructure.Repository
             _userContext = userContext;
         }
 
+        public Task<User> CheckCredentialsAsync(Credentials credentials)
+        {
+            return _userContext.Users.FirstOrDefaultAsync(user => user.Email == credentials.Email && user.Password == Utils.Generate(credentials.Password)); 
+        }
+
         public async Task<User> CreateUserAsync(User user)
         {
             var userExists = _userContext.Users.Any(u => u.Email == user.Email);
             if (!userExists)
             {
                 user.Id = Guid.NewGuid();
-                /*                user.IsActive = true;*/
-                user.Password = this.PassGenerate(user.Password);
+                user.Password = Utils.Generate(user.Password);
                 _userContext.Users.Add(user);
                 await _userContext.SaveChangesAsync();
 
@@ -54,20 +57,6 @@ namespace Market.Infrastructure.Repository
             _userContext.Users.Remove(user);
             await _userContext.SaveChangesAsync();
             return true;
-        }
-
-        private string PassGenerate(string pass)
-        {
-
-            byte[] salt = { 12, 15, 11, 13, 4, 7, 9, 1, 2, 1, 7, 22, 44, 55, 55, 22 };
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: pass!,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA256,
-                iterationCount: 100000,
-                numBytesRequested: 256 / 8));
-
-            return hashed;
         }
 
         public async Task<IEnumerable<User>> GetAllAsync(UserQueryRequest userQueryRequest)

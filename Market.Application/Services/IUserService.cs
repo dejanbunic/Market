@@ -12,5 +12,6 @@ namespace Market.Application.Services
         public Task<User> CreateUserAsync(User user);
         public Task<bool> DeleteUserAsync(Guid userId);
         public Task<User> UpdateUserAsync(User user);
+        public Task<User> CheckCredentialsAsync(Credentials credentials);
     }
 }

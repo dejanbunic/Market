@@ -14,6 +14,11 @@ namespace Market.Infrastructure.Services
             _userRepository = userRepository;
         }
 
+        public async Task<User> CheckCredentialsAsync(Credentials credentials)
+        {
+            return await _userRepository.CheckCredentialsAsync(credentials);
+        }
+
         public async Task<User> CreateUserAsync(User user)
         {
 

@@ -41,36 +41,6 @@ namespace Market.Domain
                     .IsRequired();
             });
 
-            /*var users = new User[]
-            {
-                new User { Id = Guid.NewGuid(), FirstName = "Dejan", LastName = "Bunic", Password = PassGenerate("0709"), Email = "dejanbunic@company.ba", IsActive= false },
-                new User { Id = Guid.NewGuid(), FirstName = "Petar", LastName = "Bunic", Password = PassGenerate("0709"), Email = "petarbunic@company.ba", IsActive = false },
-                new User { Id = Guid.NewGuid(), FirstName = "Zele", LastName = "Zeka", Password = PassGenerate("0709"), Email = "zelezeka@company.ba", IsActive = false },
-               
-            };
-
-            builder.Entity<User>().HasData(
-                users
-               );*/
-
-
-        }
-
-        private string PassGenerate(string pass)
-        {
-            // Generate a 128-bit salt using a sequence of
-            // cryptographically strong random bytes
-            byte[] salt = RandomNumberGenerator.GetBytes(128 / 8); // divide by 8 to convert bits to bytes
-
-            // derive a 256-bit subkey (use HMACSHA256 with 100,000 iterations)
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: pass!,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA256,
-                iterationCount: 100000,
-                numBytesRequested: 256 / 8));
-
-            return hashed;
         }
     }
 }
